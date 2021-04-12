@@ -1,0 +1,15 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - type: bind
+        source: ./config/registery-config.yml
+        target: "/etc/docker/registry/config.yml"
+      - type: bind
+        source: ./config/certs
+        target: /root/certs/bundle
+

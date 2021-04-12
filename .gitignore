@@ -26,3 +26,6 @@ vendor/
 .DS_Store
 .env
 npm-debug.log
+.envrc
+.air.toml
+.docker-compose.yml

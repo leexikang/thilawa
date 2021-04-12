@@ -1,0 +1,4 @@
+export GO111MODULE=on
+export GOFLAGS=-mod=vendor
+export CERTPEM_PATH=config/certs/RootCA.pem
+export KEYPEM_PATH=config/certs/RootCA.key

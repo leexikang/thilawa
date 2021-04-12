@@ -1,0 +1,32 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+notifications:
+  endpoints:
+    - name: alistener
+      url: http://host.docker.internal:8080/event
+      headers:
+      timeout: 500ms
+      threshold: 5
+      backoff: 1s
+auth:
+  token:
+      realm: http://localhost:8080/auth
+      service: token-authentication
+      issuer: registry-token-issuer
+      rootcertbundle: /root/certs/bundle/RootCA.crt
